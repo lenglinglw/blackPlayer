@@ -17,6 +17,7 @@ class ActorAndContentInfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         picImageView.layer.cornerRadius = 3
         self.addSubview(picImageView)
         picImageView.snp_makeConstraints { (m) in

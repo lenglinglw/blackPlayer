@@ -14,6 +14,7 @@ class CyclePagerTableViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        headerImageView.backgroundColor = .red
         headerImageView.layer.cornerRadius = 4
         self.addSubview(headerImageView)
         headerImageView.snp_makeConstraints { (m) in

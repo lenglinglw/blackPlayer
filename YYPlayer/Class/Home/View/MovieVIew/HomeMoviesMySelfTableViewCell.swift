@@ -13,12 +13,19 @@ class HomeMoviesMySelfTableViewCell: UITableViewCell {
     let nameLab = UILabel.init()
     let contentLab = UILabel.init()
     
+    lazy var imageArr: Array<String> = {
+        let array = ["ceshi_movie_01","ceshi_movie_03","ceshi_movie_05"]
+        return array
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .white
+        selectionStyle = .none
         let lab = UILabel.init()
         lab.text = "你的专属影院"
         lab.font = UIFont.boldSystemFont(ofSize: 16)
-        lab.textColor = .white
+        lab.textColor = CB_titleLabTextColor
         self.addSubview(lab)
         lab.snp_makeConstraints { (m) in
             m.top.equalToSuperview().offset(16)
@@ -58,6 +65,7 @@ extension HomeMoviesMySelfTableViewCell: TYCyclePagerViewDataSource, TYCyclePage
     
     func pagerView(_ pagerView: TYCyclePagerView, cellForItemAt index: Int) -> UICollectionViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", for: index) as! CyclePagerTableViewCell
+        cell.headerImageView.image = UIImage(named: imageArr[index])
         return cell
     }
     

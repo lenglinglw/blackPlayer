@@ -44,11 +44,11 @@ class HomeMovieCycleTableViewCell: UITableViewCell {
         cycleView.register(CyclePagerTableViewCell.self, forCellWithReuseIdentifier: "cell")
         self.addSubview(cycleView)
         cycleView.snp_makeConstraints { (m) in
-            m.top.equalToSuperview().offset(8)
-            m.left.equalToSuperview().offset(10)
-            m.right.equalToSuperview().offset(-10)
+            m.top.equalToSuperview().offset(0)
+            m.left.equalToSuperview().offset(0)
+            m.right.equalToSuperview().offset(0)
             m.height.equalTo(160)
-            m.bottom.equalToSuperview().offset(-8)
+            m.bottom.equalToSuperview().offset(0)
         }
    }
 }
@@ -67,8 +67,8 @@ extension HomeMovieCycleTableViewCell: TYCyclePagerViewDataSource, TYCyclePagerV
     
     func layout(for pageView: TYCyclePagerView) -> TYCyclePagerViewLayout {
         let layout = TYCyclePagerViewLayout.init()
-        layout.itemSize = CGSize(width: kAppWidth - 16, height: 160 )
-        layout.itemSpacing = 8
+        layout.itemSize = CGSize(width: kAppWidth, height: 160)
+        layout.itemSpacing = 0
         layout.layoutType = .normal
         return layout
     }

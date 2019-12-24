@@ -27,6 +27,7 @@ class ActorAndContentInfoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.backgroundColor = .white
         nameLab.text      = "中国机长"
         nameLab.textColor = CB_titleLabTextColor
         nameLab.font      = CB_titleFont()

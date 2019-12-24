@@ -10,6 +10,9 @@ import UIKit
 
 class MySelfBtnTableViewCell: UITableViewCell {
 
+    weak var vc: UIViewController?
+    
+    
     lazy var dataArr: [Dictionary<String,String>] = {
         var dataArr = Array<Dictionary<String, String>>()
         dataArr = [["iconImage":"my_self_collect", "title": "我的收藏"],
@@ -23,6 +26,13 @@ class MySelfBtnTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        let spaceView = UIView.init()
+        spaceView.backgroundColor = CB_lightGaryBgViewColor
+        self.addSubview(spaceView)
+        spaceView.snp_makeConstraints { (m) in
+            m.top.left.right.equalToSuperview()
+            m.height.equalTo(4)
+        }
         let flowLayout = UICollectionViewFlowLayout()
         //设置cell尺寸
         flowLayout.itemSize = CGSize(width: kAppWidth/3, height: kAppWidth / 3 * 0.8)
@@ -34,12 +44,13 @@ class MySelfBtnTableViewCell: UITableViewCell {
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        //创建重用cell（集合对象是代码生成的而不是NIB或故事板生成的因此需要注册一个UICollectionCell，否则初始化时会发生错误）
+    //创建重用cell（集合对象是代码生成的而不是NIB或故事板生成的因此需要注册一个UICollectionCell，否则初始化时会发生错误）
         collectionView.register(MySelfCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "MySelfCollectionViewCell")
         self.addSubview(collectionView)
         collectionView.snp_makeConstraints { (m) in
-            m.edges.equalToSuperview()
-            m.height.equalTo(kAppWidth * 0.8 * 2/3 + 10)
+            m.top.equalTo(spaceView.snp_bottom)
+            m.bottom.left.right.equalToSuperview()
+            m.height.equalTo(kAppWidth * 0.8 * 2/3 + 4)
         }
     }
     
@@ -63,7 +74,16 @@ extension MySelfBtnTableViewCell: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
+        guard vc != nil else {
+            return
+        }
+        if indexPath.row == 0 {
+            vc?.navigationController?.pushViewController(MyCollectionViewController(), animated: true)
+        }
+        if indexPath.row == 1 {
+            vc?.navigationController?.pushViewController(HistoryViewController(), animated: true)
+        }
     }
     
     //每个分区的内边距

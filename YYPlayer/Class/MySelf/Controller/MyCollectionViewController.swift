@@ -1,5 +1,5 @@
 //
-//  HistoryViewController.swift
+//  MyCollectionViewController.swift
 //  YYPlayer
 //
 //  Created by 苏强 on 2019/12/6.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class HistoryViewController: BaseViewController {
+class MyCollectionViewController: BaseViewController {
 
     let tableView   = UITableView.init()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         drawUI()
-        self.title = "历史记录"
+        self.title = "我的收藏"
     }
     
     private func drawUI() {
@@ -38,7 +38,7 @@ class HistoryViewController: BaseViewController {
     }
 }
 
-extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyCollectionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -57,7 +57,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         let view = UIView.init()
         view.backgroundColor = .black
         let lab = UILabel()
-        lab.text = "111"
+        lab.text = "今天"
         lab.textColor = .white
         view.addSubview(lab)
         lab.snp_makeConstraints { (m) in
@@ -69,4 +69,3 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
 }
-
